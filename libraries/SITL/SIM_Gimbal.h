@@ -92,6 +92,7 @@ private:
     bool seen_gimbal_control;
     uint8_t vehicle_system_id;
     uint8_t vehicle_component_id;
+    uint8_t vehicle_group_id;
 
     SocketAPM mav_socket;
     struct {

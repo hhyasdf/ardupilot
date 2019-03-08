@@ -63,6 +63,7 @@ private:
     uint32_t last_heartbeat_ms = 0;
     bool seen_heartbeat = false;
     uint8_t vehicle_system_id;
+    uint8_t vehicle_group_id;
     uint8_t vehicle_component_id;
 
     SocketAPM mav_socket { false };

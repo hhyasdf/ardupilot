@@ -38,6 +38,7 @@ void Rover::init_ardupilot()
 #endif
 
     mavlink_system.sysid = g.sysid_this_mav;
+    mavlink_system.groupid = g.groupid_this_mav;
 
     // initialise serial ports
     serial_manager.init();

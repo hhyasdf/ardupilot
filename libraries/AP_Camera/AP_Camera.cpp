@@ -211,7 +211,7 @@ void AP_Camera::configure(float shooting_mode, float shutter_speed, float apertu
     mav_cmd_long.param7 = engine_cutoff_time;
 
     // Encode Command long into MAVLINK msg
-    mavlink_msg_command_long_encode(0, 0, &msg, &mav_cmd_long);
+    mavlink_msg_command_long_encode(0, 0, 0, &msg, &mav_cmd_long);
 
     // send to all components
     GCS_MAVLINK::send_to_components(&msg);
@@ -260,7 +260,7 @@ void AP_Camera::control(float session, float zoom_pos, float zoom_step, float fo
     mav_cmd_long.param6 = cmd_id;
 
     // Encode Command long into MAVLINK msg
-    mavlink_msg_command_long_encode(0, 0, &msg, &mav_cmd_long);
+    mavlink_msg_command_long_encode(0, 0, 0, &msg, &mav_cmd_long);
 
     // send to all components
     GCS_MAVLINK::send_to_components(&msg);
@@ -421,7 +421,7 @@ void AP_Camera::take_picture()
     cmd_msg.param5 = 1;
     // create message
     mavlink_message_t msg;
-    mavlink_msg_command_long_encode(0, 0, &msg, &cmd_msg);
+    mavlink_msg_command_long_encode(0, 0, 0, &msg, &cmd_msg);
 
     // forward to all components
     GCS_MAVLINK::send_to_components(&msg);

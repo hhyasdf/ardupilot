@@ -229,6 +229,7 @@ void Gimbal::param_send(const struct gimbal_param *p)
     chan0_status->current_tx_seq = mavlink.seq;
     uint16_t len = mavlink_msg_param_value_encode(vehicle_system_id,
                                                   vehicle_component_id,
+                                                  vehicle_group_id,
                                                   &msg, &param_value);
     chan0_status->current_tx_seq = saved_seq;
 
@@ -288,6 +289,7 @@ void Gimbal::send_report(void)
                         seen_heartbeat = true;
                         vehicle_component_id = msg.compid;
                         vehicle_system_id = msg.sysid;
+                        vehicle_group_id = msg.groupid;
                         ::printf("Gimbal using srcSystem %u\n", (unsigned)vehicle_system_id);
                     }
                     break;
@@ -363,6 +365,7 @@ void Gimbal::send_report(void)
         chan0_status->current_tx_seq = mavlink.seq;
         len = mavlink_msg_heartbeat_encode(vehicle_system_id,
                                            vehicle_component_id,
+                                           vehicle_group_id,
                                            &msg, &heartbeat);
         chan0_status->current_tx_seq = saved_seq;
 
@@ -396,6 +399,7 @@ void Gimbal::send_report(void)
         chan0_status->current_tx_seq = mavlink.seq;
         len = mavlink_msg_gimbal_report_encode(vehicle_system_id,
                                                vehicle_component_id,
+                                               vehicle_group_id,
                                                &msg, &gimbal_report);
         chan0_status->current_tx_seq = saved_seq;
 

@@ -61,6 +61,7 @@ void Vicon::maybe_send_heartbeat()
     mavlink_message_t msg;
     mavlink_msg_heartbeat_pack(system_id,
                                component_id,
+                               group_id,
                                &msg,
                                MAV_TYPE_GCS,
                                MAV_AUTOPILOT_INVALID,
@@ -107,6 +108,7 @@ void Vicon::update_vicon_position_estimate(const Location &loc,
     mavlink_msg_vicon_position_estimate_pack_chan(
         system_id,
         component_id,
+        group_id,
         mavlink_ch,
         &obs_msg,
         now_us + time_offset_us,

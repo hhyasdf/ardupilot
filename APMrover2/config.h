@@ -46,6 +46,11 @@
   #define MAV_SYSTEM_ID    1
 #endif
 
+// GROUP ID
+#ifndef MAV_GROUP_ID
+  #define MAV_GROUP_ID MAV_SYSTEM_ID
+#endif
+
 #ifndef ARM_DELAY_MS
   #define ARM_DELAY_MS  2000
 #endif

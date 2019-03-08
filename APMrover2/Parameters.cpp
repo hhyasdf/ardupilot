@@ -44,6 +44,13 @@ const AP_Param::Info Rover::var_info[] = {
     // @User: Advanced
     GSCALAR(sysid_this_mav,         "SYSID_THISMAV",    MAV_SYSTEM_ID),
 
+    // @Param: GROUPID_THIS_MAV
+    // @DisplayName: MAVLink group ID of this vehicle
+    // @Description: Allows setting an individual MAVLink group id for this vehicle to distinguish it from others on the same group
+    // @Range: 1 255
+    // @User: Advanced
+    GSCALAR(groupid_this_mav,         "GROUPID_THISMAV",    MAV_GROUP_ID),
+
     // @Param: SYSID_MYGCS
     // @DisplayName: MAVLink ground station ID
     // @Description: The identifier of the ground station in the MAVLink protocol. Don't change this unless you also modify the ground station to match.

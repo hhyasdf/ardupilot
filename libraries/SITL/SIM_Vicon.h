@@ -45,6 +45,7 @@ private:
     // TODO: make these parameters:
     const uint8_t system_id = 17;
     const uint8_t component_id = 18;
+    const uint8_t group_id = 17;
 
     // we share channels with the ArduPilot binary!
     const mavlink_channel_t mavlink_ch = (mavlink_channel_t)(MAVLINK_COMM_0+5);

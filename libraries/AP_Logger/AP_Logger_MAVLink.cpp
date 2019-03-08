@@ -576,6 +576,7 @@ bool AP_Logger_MAVLink::send_log_block(struct dm_block &block)
     // Debug("Sending block (%d)", block.seqno);
     mavlink_msg_remote_log_data_block_pack(mavlink_system.sysid,
                                            MAV_COMP_ID_LOG,
+                                           mavlink_system.groupid,
                                            &msg,
                                            _target_system_id,
                                            _target_component_id,

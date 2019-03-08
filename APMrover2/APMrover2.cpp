@@ -286,6 +286,7 @@ void Rover::one_second_loop(void)
 
     // cope with changes to mavlink system ID
     mavlink_system.sysid = g.sysid_this_mav;
+    mavlink_system.groupid = g.groupid_this_mav;
 
     // attempt to update home position and baro calibration if not armed:
     if (!hal.util->get_soft_armed()) {

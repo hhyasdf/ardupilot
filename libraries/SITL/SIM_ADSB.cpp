@@ -137,6 +137,7 @@ void ADSB::send_report(void)
                         seen_heartbeat = true;
                         vehicle_component_id = msg.compid;
                         vehicle_system_id = msg.sysid;
+                        vehicle_group_id = msg.groupid;
                         ::printf("ADSB using srcSystem %u\n", (unsigned)vehicle_system_id);
                     }
                     break;
@@ -172,6 +173,7 @@ void ADSB::send_report(void)
         chan0_status->current_tx_seq = mavlink.seq;
         len = mavlink_msg_heartbeat_encode(vehicle_system_id,
                                            vehicle_component_id,
+                                           vehicle_group_id,
                                            &msg, &heartbeat);
         chan0_status->current_tx_seq = saved_seq;
 
@@ -225,6 +227,7 @@ void ADSB::send_report(void)
             chan0_status->current_tx_seq = mavlink.seq;
             len = mavlink_msg_adsb_vehicle_encode(vehicle_system_id,
                                                   MAV_COMP_ID_ADSB,
+                                                  vehicle_group_id,
                                                   &msg, &adsb_vehicle);
             chan0_status->current_tx_seq = saved_seq;
             
@@ -248,6 +251,7 @@ void ADSB::send_report(void)
         const mavlink_uavionix_adsb_transceiver_health_report_t health_report = {UAVIONIX_ADSB_RF_HEALTH_OK};
         len = mavlink_msg_uavionix_adsb_transceiver_health_report_encode(vehicle_system_id,
                                               MAV_COMP_ID_ADSB,
+                                              vehicle_group_id,
                                               &msg, &health_report);
         chan0_status->current_tx_seq = saved_seq;
         chan0_status->flags = saved_flags;
